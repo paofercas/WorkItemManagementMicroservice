@@ -19,7 +19,7 @@ namespace UserManagementMicroservice.Data
             //Creating the first elements for the database.
             modelBuilder.Entity<User>().HasData(
                 new User { Username = "UsuarioA", HighRelevanceCount = 2, PendingItemsCount = 3 },
-                new User { Username = "UsuarioB", HighRelevanceCount = 0, PendingItemsCount = 1 },
+                new User { Username = "UsuarioB", HighRelevanceCount = 0, PendingItemsCount = 1 }
             );
         }
     }
