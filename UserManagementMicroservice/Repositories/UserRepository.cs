@@ -24,15 +24,17 @@ namespace UserManagementMicroservice.Repositories
             return _context.Users.FirstOrDefault(u => u.Username == username);
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(User user, string username)
         {
-            var existing = GetUserByUsername(user.Username);
+            var existing = GetUserByUsername(username);
             if (existing != null)
-            {
+            
                 existing.HighRelevanceCount = user.HighRelevanceCount;
                 existing.PendingItemsCount = user.PendingItemsCount;
                 _context.SaveChanges();
             }
         }
+
+
     }
 }

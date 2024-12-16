@@ -22,9 +22,9 @@ namespace UserManagementMicroservice.Services
             return _userRepository.GetUserByUsername(username);
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(User user, string username)
         {
-            _userRepository.UpdateUser(user);
+            _userRepository.UpdateUser(user, username);
         }
     }
 }

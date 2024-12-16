@@ -38,13 +38,34 @@ namespace UserManagementMicroservice.Controllers
         [HttpPut("{username}")]
         public IActionResult UpdateUser(string username, [FromBody] User updatedUser)
         {
-            if (username != updatedUser.Username)
-                return BadRequest();
             var user = _userService.GetUserByUsername(username);
             if (user == null)
-                return NotFound();
-            _userService.UpdateUser(updatedUser);
+                return NotFound();  // Return 404 if the user is not found
+
+            bool usernameUpdated = false;
+
+            if (!string.IsNullOrEmpty(updatedUser.Username) && updatedUser.Username != username)
+            {
+                usernameUpdated = true;
+            }
+
+
+            // Update the user information (excluding the username)
+            _userService.UpdateUser(updatedUser, username);
+
+            // If the username update was attempted, return a message to the client
+            if (usernameUpdated)
+            {
+                return Ok(new
+                {
+                    Message = "Remember that the 'username' field will not be updated since it is the identifier of each user (primary key), but the other fields will be updated.",
+                    UpdatedUser = _userService.GetUserByUsername(username)
+                });
+            }
+
+            // If no username update was attempted, return a 204 No Content response
             return NoContent();
         }
+
     }
 }

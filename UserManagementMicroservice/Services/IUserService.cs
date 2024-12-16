@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UserManagementMicroservice.Models;
+﻿using UserManagementMicroservice.Models;
 
 namespace UserManagementMicroservice.Services
 {
@@ -7,6 +6,6 @@ namespace UserManagementMicroservice.Services
     {
         IEnumerable<User> GetAllUsers();
         User GetUserByUsername(string username);
-        void UpdateUser(User user);
+        void UpdateUser(User user, string username);
     }
 }

@@ -7,6 +7,6 @@ namespace UserManagementMicroservice.Repositories
     {
         IEnumerable<User> GetAllUsers();
         User GetUserByUsername(string username);
-        void UpdateUser(User user);
+        void UpdateUser(User user, string username);
     }
 }
