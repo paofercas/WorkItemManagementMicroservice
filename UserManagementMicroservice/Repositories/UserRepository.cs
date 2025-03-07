@@ -28,13 +28,11 @@ namespace UserManagementMicroservice.Repositories
         {
             var existing = GetUserByUsername(username);
             if (existing != null)
-            
+            {
                 existing.HighRelevanceCount = user.HighRelevanceCount;
                 existing.PendingItemsCount = user.PendingItemsCount;
                 _context.SaveChanges();
             }
         }
-
-
     }
 }
